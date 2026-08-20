@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  color: #132238;
+  background: #f7f9fc;
+}
+
+@layer utilities {
+  .wrap {
+    @apply mx-auto w-full max-w-wrap px-5 sm:px-8 lg:px-10;
+  }
+
+  .eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.18em] text-coral;
+  }
+
+  .display-title {
+    @apply font-display text-4xl font-bold leading-[1.02] tracking-[-0.04em] sm:text-5xl lg:text-7xl;
+  }
+}
+
+/* visible keyboard focus, respected everywhere */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid #f06449;
+  outline-offset: 2px;
+}
+
+::selection { background: #f06449; color: #fff; }
+
+.reveal { animation: reveal 700ms cubic-bezier(.2,.8,.2,1) both; }
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar { display: none; }
+
+.faq-summary {
+  transition: color 260ms ease;
+}
+
+.faq-panel {
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: max-height 850ms cubic-bezier(0.22, 1, 0.36, 1), opacity 440ms ease-out, transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: max-height, opacity, transform;
+}
+
+.faq-panel-inner {
+  padding-top: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 380ms ease-out 120ms, transform 540ms cubic-bezier(0.22, 1, 0.36, 1) 120ms;
+}
+
+.faq-panel-inner p {
+  max-width: 42rem;
+}
+
+.faq-toggle {
+  position: relative;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.faq-icon {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  transition: opacity 260ms ease-out, transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.faq-plus {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.faq-minus {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.72);
+}
+
+button[aria-expanded="true"] .faq-plus {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.72);
+}
+
+button[aria-expanded="true"] .faq-minus {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+button[aria-expanded="true"] + .faq-panel .faq-panel-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-scan { animation: hero-scan 5s ease-in-out infinite; }
+.hero-orbit { animation: hero-orbit 12s linear infinite; }
+.hero-progress { animation: hero-progress 3.5s ease-in-out infinite alternate; }
+
+@keyframes hero-scan {
+  0%, 100% { transform: translateY(28px); opacity: .45; }
+  50% { transform: translateY(408px); opacity: 1; }
+}
+
+@keyframes hero-orbit {
+  from { transform: rotate(0deg) translateX(7px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(7px) rotate(-360deg); }
+}
+
+@keyframes hero-progress {
+  from { width: 42%; }
+  to { width: 88%; }
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
