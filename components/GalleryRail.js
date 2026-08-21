@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const galleryItems = [
   ["final-seconds", "https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1200&q=82", "Runner crossing a finish line", "The final seconds", "Focus, pace, and the feeling of getting there."],
@@ -23,12 +24,12 @@ export default function GalleryRail() {
       <div ref={railRef} className="gallery-rail flex snap-x snap-mandatory gap-5 overflow-x-auto pb-5 pr-[12vw] scrollbar-none" aria-label="Illustrative sports gallery">
         {galleryItems.map(([slug, src, alt, title, description], index) => (
           <figure key={src} className={`group relative shrink-0 snap-start overflow-hidden ${index === 0 ? "w-[78vw] sm:w-[58vw] lg:w-[42vw]" : "w-[72vw] sm:w-[42vw] lg:w-[28vw]"}`}>
-            <a href={`/portfolio/${slug}`} aria-label={`Open post: ${title}`}><img src={src} alt={alt} className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" /></a>
+            <Link href={`/portfolio/${slug}`} aria-label={`Open post: ${title}`}><img src={src} alt={alt} className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" /></Link>
             {index > 0 && <div className="bg-white px-5 py-5">
               <p className="text-xs font-bold uppercase tracking-[.16em] text-coral">Visual direction / 0{index + 1}</p>
-              <h3 className="mt-2 font-display text-xl font-bold text-ink"><a href={`/portfolio/${slug}`} className="transition hover:text-coral">{title}</a></h3>
+              <h3 className="mt-2 font-display text-xl font-bold text-ink"><Link href={`/portfolio/${slug}`} className="transition hover:text-coral">{title}</Link></h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-soft">{description}</p>
-              <a href={`/portfolio/${slug}`} className="mt-4 inline-flex items-center text-sm font-bold text-coral">Read post <ArrowRight className="ml-1 h-4 w-4" /></a>
+              <Link href={`/portfolio/${slug}`} className="mt-4 inline-flex items-center text-sm font-bold text-coral">Read post <ArrowRight className="ml-1 h-4 w-4" /></Link>
             </div>}
           </figure>
         ))}

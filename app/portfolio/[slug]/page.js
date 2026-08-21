@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import { getManagedPosts } from "@/lib/posts";
 
 export const dynamic = "force-dynamic";
@@ -125,9 +126,9 @@ export default async function Page({ params }) {
       <Header />
       <article className="pt-[72px]">
         <div className="wrap py-8">
-          <a href="/portfolio" className="inline-flex items-center gap-2 text-sm font-bold text-ink-soft transition hover:text-coral">
+          <Link href="/portfolio" className="inline-flex items-center gap-2 text-sm font-bold text-ink-soft transition hover:text-coral">
             <ArrowLeft className="h-4 w-4" /> Back to portfolio
-          </a>
+          </Link>
         </div>
 
         <header className="bg-navy text-white">
@@ -184,9 +185,9 @@ export default async function Page({ params }) {
               This is an illustrative editorial post using external imagery. It is not presented as a Northstar client project, case study, testimonial, or performance claim.
             </div>
 
-            <a href="/contact" className="mt-10 inline-flex items-center gap-2 rounded-full bg-coral px-6 py-3 text-sm font-bold text-white transition hover:bg-ink">
+            <Link href="/contact" className="mt-10 inline-flex items-center gap-2 rounded-full bg-coral px-6 py-3 text-sm font-bold text-white transition hover:bg-ink">
               Start a conversation <ArrowUpRight className="h-4 w-4" />
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -196,9 +197,9 @@ export default async function Page({ params }) {
               <p className="eyebrow">Next post</p>
               <h2 className="mt-2 font-display text-2xl font-bold text-ink">{nextPost.title}</h2>
             </div>
-            <a href={`/portfolio/${nextSlug}`} className="inline-flex items-center gap-2 text-sm font-bold text-coral">
+            <Link href={`/portfolio/${nextSlug}`} className="inline-flex items-center gap-2 text-sm font-bold text-coral">
               Read next <ArrowRight className="h-4 w-4" />
-            </a>
+            </Link>
           </div>
         </div>
       </article>

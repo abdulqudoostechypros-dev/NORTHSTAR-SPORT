@@ -3,6 +3,7 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import ContactForm from "./ContactForm";
+import Link from "next/link";
 import { useLayoutEffect, useRef, useState } from "react";
 import { ArrowUpRight, Check, Mail, MapPin, Minus, Plus } from "lucide-react";
 
@@ -32,7 +33,7 @@ function Shell({ children }) {
 }
 
 function Button({ children = "Start a conversation", href = "/contact" }) {
-  return <a href={href} className="inline-flex items-center gap-2 rounded-full bg-coral px-6 py-3.5 text-sm font-bold text-white transition hover:bg-ink">{children}<ArrowUpRight className="h-4 w-4" /></a>;
+  return <Link href={href} className="inline-flex items-center gap-2 rounded-full bg-coral px-6 py-3.5 text-sm font-bold text-white transition hover:bg-ink">{children}<ArrowUpRight className="h-4 w-4" /></Link>;
 }
 
 export function Intro({ eyebrow, title, description }) {
@@ -44,7 +45,7 @@ export function AboutPage() {
 }
 
 export function ServicesPage() {
-  return <Shell><Intro eyebrow="Services" title="A studio for the full sporting story." description="Choose the right starting point, or bring us a bigger question. We shape the team around the work." /><section className="wrap py-20 lg:py-28"><div className="grid gap-5 md:grid-cols-3">{Object.entries(serviceDetails).map(([slug, service], index) => <a href={`/services/${slug}`} key={slug} className="group bg-white p-7 shadow-[0_12px_40px_rgba(19,34,56,.06)] transition hover:-translate-y-1"><p className="eyebrow">0{index + 1} / Northstar</p><h2 className="mt-20 font-display text-2xl font-bold">{service.title}</h2><p className="mt-4 text-sm leading-relaxed text-ink-soft">{service.intro}</p><span className="mt-8 inline-flex items-center text-sm font-bold text-coral">Explore service <ArrowUpRight className="ml-1 h-4 w-4" /></span></a>)}</div></section></Shell>;
+  return <Shell><Intro eyebrow="Services" title="A studio for the full sporting story." description="Choose the right starting point, or bring us a bigger question. We shape the team around the work." /><section className="wrap py-20 lg:py-28"><div className="grid gap-5 md:grid-cols-3">{Object.entries(serviceDetails).map(([slug, service], index) => <Link href={`/services/${slug}`} key={slug} className="group bg-white p-7 shadow-[0_12px_40px_rgba(19,34,56,.06)] transition hover:-translate-y-1"><p className="eyebrow">0{index + 1} / Northstar</p><h2 className="mt-20 font-display text-2xl font-bold">{service.title}</h2><p className="mt-4 text-sm leading-relaxed text-ink-soft">{service.intro}</p><span className="mt-8 inline-flex items-center text-sm font-bold text-coral">Explore service <ArrowUpRight className="ml-1 h-4 w-4" /></span></Link>)}</div></section></Shell>;
 }
 
 export function ServicePage({ slug }) {
@@ -67,7 +68,7 @@ export function PortfolioPage() {
     }).catch(() => {});
   }, []);
 
-  return <Shell><Intro eyebrow="Portfolio / Selected work" title="Built for the moments people remember." description="A selection of ways we have helped sports stories find their shape. The work is the proof; the context is the point." /><section className="wrap grid gap-5 py-20 sm:grid-cols-2 lg:py-28">{work.map((item, index) => <a href={`/portfolio/${item.slug}`} key={`${item.slug}-${item.title}`} className={index === 0 ? "sm:col-span-2" : ""}><img src={item.image} alt={item.alt} className={`w-full object-cover ${index === 0 ? "aspect-[2/1]" : "aspect-[4/3]"}`} /><p className="eyebrow mt-5">{item.category} / 0{index + 1}</p><h2 className="mt-2 font-display text-2xl font-bold">{item.title}</h2></a>)}</section></Shell>;
+  return <Shell><Intro eyebrow="Portfolio / Selected work" title="Built for the moments people remember." description="A selection of ways we have helped sports stories find their shape. The work is the proof; the context is the point." /><section className="wrap grid gap-5 py-20 sm:grid-cols-2 lg:py-28">{work.map((item, index) => <Link href={`/portfolio/${item.slug}`} key={`${item.slug}-${item.title}`} className={index === 0 ? "sm:col-span-2" : ""}><img src={item.image} alt={item.alt} className={`w-full object-cover ${index === 0 ? "aspect-[2/1]" : "aspect-[4/3]"}`} /><p className="eyebrow mt-5">{item.category} / 0{index + 1}</p><h2 className="mt-2 font-display text-2xl font-bold">{item.title}</h2></Link>)}</section></Shell>;
 }
 
 export function TestimonialsPage() {

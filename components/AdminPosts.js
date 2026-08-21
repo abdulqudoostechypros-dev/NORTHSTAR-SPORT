@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const emptyPost = {
   slug: "",
@@ -125,7 +126,7 @@ export default function AdminPosts() {
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-wrap items-end justify-between gap-5 border-b border-line pb-8">
           <div><p className="eyebrow">Northstar Sport / Admin</p><h1 className="mt-3 font-display text-4xl font-bold">Manage portfolio posts</h1></div>
-          <a href="/portfolio" className="text-sm font-bold text-coral">View public portfolio</a>
+          <Link href="/portfolio" className="text-sm font-bold text-coral">View public portfolio</Link>
         </div>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[.65fr_1.35fr]">

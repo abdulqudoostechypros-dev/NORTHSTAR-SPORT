@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ArrowUpRight, X } from "lucide-react";
+import Link from "next/link";
 
 export default function VisitPopup() {
   const [visible, setVisible] = useState(false);
@@ -36,7 +37,7 @@ export default function VisitPopup() {
         <p className="eyebrow">Welcome to Northstar</p>
         <h2 id="visit-popup-title" className="mt-4 max-w-sm font-display text-3xl font-bold leading-tight">Find the signal behind the score.</h2>
         <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-soft">Explore our approach to sports intelligence, content production, and audience growth, or start with a conversation about your next brief.</p>
-        <div className="mt-7 flex flex-wrap items-center gap-3"><a href="/contact" onClick={() => setVisible(false)} className="inline-flex items-center gap-2 rounded-full bg-coral px-5 py-3 text-sm font-bold text-white transition hover:bg-ink">Start a conversation <ArrowUpRight className="h-4 w-4" /></a><button type="button" onClick={() => setVisible(false)} className="rounded-full border border-line px-5 py-3 text-sm font-bold text-ink-soft transition hover:border-ink hover:text-ink">Hide for this visit</button></div>
+        <div className="mt-7 flex flex-wrap items-center gap-3"><Link href="/contact" onClick={() => setVisible(false)} className="inline-flex items-center gap-2 rounded-full bg-coral px-5 py-3 text-sm font-bold text-white transition hover:bg-ink">Start a conversation <ArrowUpRight className="h-4 w-4" /></Link><button type="button" onClick={() => setVisible(false)} className="rounded-full border border-line px-5 py-3 text-sm font-bold text-ink-soft transition hover:border-ink hover:text-ink">Hide for this visit</button></div>
       </section>
     </div>
   );
